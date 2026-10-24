@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [6]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># This Python 3 environment comes with many helpful analytics libraries installed
+# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
+# For example, here's several helpful packages to load
+
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+
+# Input data files are available in the read-only "../input/" directory
+# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
+
+import os
+for dirname, _, filenames in os.walk('/kaggle/input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
+
+# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using "Save &amp; Run All" 
+# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
+
+# Use the kagglehub client library to attach Kaggle resources like competitions, datasets, and models to your session
+# Learn more about kagglehub: https://github.com/Kaggle/kagglehub/blob/main/README.md
+
+import kagglehub
+# kagglehub.dataset_download('&lt;owner&gt;/&lt;dataset-slug&gt;')
+
+!nvidia-smi
+
+
+!mkdir -p /kaggle/working/mlso
+!cp -r /kaggle/input/datasets/yuvakrishnans/mlso-exp/* /kaggle/working/mlso/
+ 
+# Change working directory to /kaggle/working/mlso
+%cd /kaggle/working/mlso
+ 
+# Now chmod will work without errors!
+!chmod +x *.sh
+!ls -la</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">/kaggle/input/datasets/yuvakrishnans/mlso-exp/Report_Draft.md
+/kaggle/input/datasets/yuvakrishnans/mlso-exp/analyze.py
+/kaggle/input/datasets/yuvakrishnans/mlso-exp/requirements.txt
+/kaggle/input/datasets/yuvakrishnans/mlso-exp/run_amp.sh
+/kaggle/input/datasets/yuvakrishnans/mlso-exp/run_experiments.sh
+/kaggle/input/datasets/yuvakrishnans/mlso-exp/run_strong.sh
+/kaggle/input/datasets/yuvakrishnans/mlso-exp/run_weak.sh
+/kaggle/input/datasets/yuvakrishnans/mlso-exp/train_ddp.py
+Sat Oct 24 03:24:29 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+| N/A   50C    P8             14W /   70W |       0MiB /  15360MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |
+| N/A   49C    P8             14W /   70W |       0MiB /  15360MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+/kaggle/working/mlso
+total 60
+drwxr-xr-x 2 root root  4096 Oct 24 03:24 .
+drwxr-xr-x 4 root root  4096 Oct 24 03:20 ..
+-rw-r--r-- 1 root root  3642 Oct 24 03:24 analyze.py
+-rw-r--r-- 1 root root 12388 Oct 24 03:24 Report_Draft.md
+-rw-r--r-- 1 root root    40 Oct 24 03:24 requirements.txt
+-rwxr-xr-x 1 root root   295 Oct 24 03:24 run_amp.sh
+-rwxr-xr-x 1 root root   911 Oct 24 03:24 run_experiments.sh
+-rwxr-xr-x 1 root root   304 Oct 24 03:24 run_strong.sh
+-rwxr-xr-x 1 root root   297 Oct 24 03:24 run_weak.sh
+-rw-r--r-- 1 root root  9897 Oct 24 03:24 train_ddp.py
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [7]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!MAXG=2 EP=30 ./run_experiments.sh</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">=== MLSO DDP Experiment Suite ===
+Target GPUs (MAXG): 2
+Epochs per run (EP): 30
+=================================
+--&gt; Step 1/3: Running Weak Scaling (N=1..2)...
+100%|█████████████████████████████████████████| 170M/170M [18:13&lt;00:00, 156kB/s]
+/usr/local/lib/python3.13/dist-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1024 03:43:17.665481203 ProcessGroupNCCL.cpp:5188] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+[comm] compute-only 141.6 ms | with sync 145.2 ms | exposed comm 3.5 ms | raw all-reduce(44.7 MB) 0.1 ms
+ep   1 |   53.2s | cum    53.2s | acc 53.91% | data-wait   0.1s
+ep   2 |   52.9s | cum   106.2s | acc 73.92% | data-wait   0.1s
+ep   3 |   52.7s | cum   158.9s | acc 74.26% | data-wait   0.1s
+ep   4 |   52.9s | cum   211.8s | acc 75.49% | data-wait   0.2s
+ep   5 |   52.9s | cum   264.7s | acc 77.84% | data-wait   0.2s
+ep   6 |   52.9s | cum   317.6s | acc 80.46% | data-wait   0.2s
+ep   7 |   52.8s | cum   370.4s | acc 79.77% | data-wait   0.2s
+ep   8 |   52.7s | cum   423.1s | acc 83.37% | data-wait   0.2s
+ep   9 |   52.5s | cum   475.6s | acc 80.94% | data-wait   0.1s
+ep  10 |   52.5s | cum   528.1s | acc 83.61% | data-wait   0.1s
+ep  11 |   52.6s | cum   580.7s | acc 85.42% | data-wait   0.1s
+ep  12 |   52.6s | cum   633.3s | acc 84.85% | data-wait   0.1s
+ep  13 |   52.6s | cum   685.9s | acc 83.22% | data-wait   0.2s
+ep  14 |   52.6s | cum   738.6s | acc 86.41% | data-wait   0.1s
+ep  15 |   52.6s | cum   791.2s | acc 85.99% | data-wait   0.2s
+ep  16 |   52.6s | cum   843.8s | acc 84.37% | data-wait   0.1s
+ep  17 |   52.6s | cum   896.4s | acc 88.95% | data-wait   0.2s
+ep  18 |   52.6s | cum   949.1s | acc 88.91% | data-wait   0.2s
+ep  19 |   52.7s | cum  1001.8s | acc 90.11% | data-wait   0.2s
+ep  20 |   52.7s | cum  1054.4s | acc 89.36% | data-wait   0.2s
+ep  21 |   52.7s | cum  1107.1s | acc 90.26% | data-wait   0.2s
+ep  22 |   52.6s | cum  1159.7s | acc 91.63% | data-wait   0.1s
+ep  23 |   52.6s | cum  1212.3s | acc 91.67% | data-wait   0.2s
+ep  24 |   52.6s | cum  1264.9s | acc 92.65% | data-wait   0.1s
+ep  25 |   52.6s | cum  1317.6s | acc 92.92% | data-wait   0.1s
+ep  26 |   52.6s | cum  1370.2s | acc 93.41% | data-wait   0.1s
+ep  27 |   52.7s | cum  1422.9s | acc 93.50% | data-wait   0.2s
+ep  28 |   52.5s | cum  1475.4s | acc 93.54% | data-wait   0.2s
+ep  29 |   52.7s | cum  1528.1s | acc 93.48% | data-wait   0.2s
+ep  30 |   52.7s | cum  1580.7s | acc 93.49% | data-wait   0.2s
+W1024 04:11:59.311000 451 torch/distributed/run.py:851] 
+W1024 04:11:59.311000 451 torch/distributed/run.py:851] *****************************************
+W1024 04:11:59.311000 451 torch/distributed/run.py:851] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1024 04:11:59.311000 451 torch/distributed/run.py:851] *****************************************
+/usr/local/lib/python3.13/dist-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1024 04:12:03.449801065 ProcessGroupNCCL.cpp:5188] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+[comm] compute-only 133.8 ms | with sync 140.9 ms | exposed comm 7.0 ms | raw all-reduce(44.7 MB) 11.1 ms
+ep   1 |   28.3s | cum    28.3s | acc 50.56% | data-wait   0.3s
+ep   2 |   26.9s | cum    55.2s | acc 65.78% | data-wait   0.3s
+ep   3 |   27.0s | cum    82.1s | acc 71.49% | data-wait   0.3s
+ep   4 |   27.4s | cum   109.5s | acc 73.12% | data-wait   0.3s
+ep   5 |   27.1s | cum   136.7s | acc 77.65% | data-wait   0.3s
+ep   6 |   27.1s | cum   163.7s | acc 78.78% | data-wait   0.3s
+ep   7 |   27.2s | cum   190.9s | acc 76.99% | data-wait   0.2s
+ep   8 |   27.2s | cum   218.1s | acc 78.60% | data-wait   0.3s
+ep   9 |   27.0s | cum   245.1s | acc 74.02% | data-wait   0.2s
+ep  10 |   27.1s | cum   272.1s | acc 83.20% | data-wait   0.3s
+ep  11 |   27.1s | cum   299.2s | acc 82.82% | data-wait   0.3s
+ep  12 |   27.1s | cum   326.3s | acc 81.48% | data-wait   0.3s
+ep  13 |   27.1s | cum   353.4s | acc 81.75% | data-wait   0.3s
+ep  14 |   27.0s | cum   380.4s | acc 83.46% | data-wait   0.2s
+ep  15 |   27.0s | cum   407.4s | acc 81.09% | data-wait   0.3s
+ep  16 |   27.1s | cum   434.5s | acc 85.53% | data-wait   0.3s
+ep  17 |   27.1s | cum   461.6s | acc 82.79% | data-wait   0.3s
+ep  18 |   27.1s | cum   488.7s | acc 87.47% | data-wait   0.3s
+ep  19 |   27.1s | cum   515.8s | acc 85.93% | data-wait   0.2s
+ep  20 |   27.1s | cum   542.9s | acc 87.58% | data-wait   0.2s
+ep  21 |   27.2s | cum   570.1s | acc 90.61% | data-wait   0.2s
+ep  22 |   27.2s | cum   597.2s | acc 90.42% | data-wait   0.3s
+ep  23 |   27.1s | cum   624.4s | acc 91.29% | data-wait   0.3s
+ep  24 |   27.1s | cum   651.5s | acc 92.59% | data-wait   0.2s
+ep  25 |   27.1s | cum   678.6s | acc 92.93% | data-wait   0.2s
+ep  26 |   27.2s | cum   705.8s | acc 93.52% | data-wait   0.4s
+ep  27 |   27.1s | cum   733.0s | acc 93.74% | data-wait   0.3s
+ep  28 |   27.1s | cum   760.1s | acc 93.92% | data-wait   0.3s
+ep  29 |   27.1s | cum   787.2s | acc 93.98% | data-wait   0.3s
+ep  30 |   27.2s | cum   814.4s | acc 93.99% | data-wait   0.4s
+--&gt; Step 2/3: Running Strong Scaling (N=1..2)...
+/usr/local/lib/python3.13/dist-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1024 04:27:57.178766380 ProcessGroupNCCL.cpp:5188] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+[comm] compute-only 534.1 ms | with sync 513.1 ms | exposed comm -21.0 ms | raw all-reduce(44.7 MB) 0.1 ms
+ep   1 |   49.3s | cum    49.3s | acc 37.59% | data-wait   0.3s
+ep   2 |   50.2s | cum    99.5s | acc 62.70% | data-wait   0.3s
+ep   3 |   50.2s | cum   149.7s | acc 67.89% | data-wait   0.3s
+ep   4 |   49.8s | cum   199.5s | acc 70.48% | data-wait   0.3s
+ep   5 |   49.8s | cum   249.3s | acc 71.22% | data-wait   0.3s
+ep   6 |   49.6s | cum   298.9s | acc 75.19% | data-wait   0.3s
+ep   7 |   49.6s | cum   348.5s | acc 77.69% | data-wait   0.3s
+ep   8 |   49.5s | cum   398.0s | acc 76.75% | data-wait   0.3s
+ep   9 |   49.5s | cum   447.5s | acc 81.81% | data-wait   0.3s
+ep  10 |   49.6s | cum   497.1s | acc 84.27% | data-wait   0.3s
+ep  11 |   49.7s | cum   546.8s | acc 77.79% | data-wait   0.3s
+ep  12 |   49.6s | cum   596.4s | acc 82.20% | data-wait   0.3s
+ep  13 |   49.4s | cum   645.8s | acc 70.39% | data-wait   0.3s
+ep  14 |   49.5s | cum   695.3s | acc 85.35% | data-wait   0.3s
+ep  15 |   49.6s | cum   744.8s | acc 84.32% | data-wait   0.3s
+ep  16 |   49.6s | cum   794.4s | acc 87.77% | data-wait   0.3s
+ep  17 |   49.4s | cum   843.8s | acc 83.34% | data-wait   0.3s
+ep  18 |   49.4s | cum   893.2s | acc 86.76% | data-wait   0.3s
+ep  19 |   49.4s | cum   942.7s | acc 89.03% | data-wait   0.3s
+ep  20 |   49.4s | cum   992.1s | acc 89.95% | data-wait   0.3s
+ep  21 |   49.4s | cum  1041.5s | acc 89.80% | data-wait   0.3s
+ep  22 |   49.4s | cum  1090.9s | acc 90.16% | data-wait   0.3s
+ep  23 |   49.4s | cum  1140.3s | acc 90.93% | data-wait   0.4s
+ep  24 |   49.4s | cum  1189.8s | acc 92.30% | data-wait   0.3s
+ep  25 |   49.5s | cum  1239.3s | acc 92.71% | data-wait   0.3s
+ep  26 |   49.3s | cum  1288.7s | acc 92.90% | data-wait   0.3s
+ep  27 |   49.5s | cum  1338.1s | acc 93.50% | data-wait   0.3s
+ep  28 |   49.6s | cum  1387.7s | acc 93.58% | data-wait   0.3s
+ep  29 |   49.5s | cum  1437.2s | acc 93.73% | data-wait   0.3s
+ep  30 |   49.5s | cum  1486.7s | acc 93.71% | data-wait   0.4s
+W1024 04:55:59.420000 1044 torch/distributed/run.py:851] 
+W1024 04:55:59.420000 1044 torch/distributed/run.py:851] *****************************************
+W1024 04:55:59.420000 1044 torch/distributed/run.py:851] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1024 04:55:59.420000 1044 torch/distributed/run.py:851] *****************************************
+/usr/local/lib/python3.13/dist-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1024 04:56:03.483768880 ProcessGroupNCCL.cpp:5188] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+[comm] compute-only 281.5 ms | with sync 290.1 ms | exposed comm 8.6 ms | raw all-reduce(44.7 MB) 11.1 ms
+ep   1 |   27.0s | cum    27.0s | acc 34.71% | data-wait   0.4s
+ep   2 |   26.5s | cum    53.4s | acc 55.36% | data-wait   0.4s
+ep   3 |   27.0s | cum    80.4s | acc 65.69% | data-wait   0.4s
+ep   4 |   26.8s | cum   107.3s | acc 75.59% | data-wait   0.4s
+ep   5 |   26.6s | cum   133.9s | acc 78.46% | data-wait   0.4s
+ep   6 |   26.8s | cum   160.7s | acc 76.15% | data-wait   0.4s
+ep   7 |   26.8s | cum   187.5s | acc 76.36% | data-wait   0.4s
+ep   8 |   26.9s | cum   214.5s | acc 78.52% | data-wait   0.5s
+ep   9 |   26.7s | cum   241.2s | acc 81.57% | data-wait   0.4s
+ep  10 |   26.6s | cum   267.8s | acc 78.50% | data-wait   0.4s
+ep  11 |   26.7s | cum   294.5s | acc 83.39% | data-wait   0.4s
+ep  12 |   26.8s | cum   321.2s | acc 77.42% | data-wait   0.5s
+ep  13 |   26.9s | cum   348.2s | acc 79.66% | data-wait   0.4s
+ep  14 |   26.8s | cum   375.0s | acc 74.46% | data-wait   0.5s
+ep  15 |   26.6s | cum   401.6s | acc 85.44% | data-wait   0.4s
+ep  16 |   26.5s | cum   428.1s | acc 83.41% | data-wait   0.4s
+ep  17 |   26.7s | cum   454.8s | acc 87.63% | data-wait   0.4s
+ep  18 |   26.7s | cum   481.6s | acc 84.37% | data-wait   0.4s
+ep  19 |   26.8s | cum   508.3s | acc 87.11% | data-wait   0.4s
+ep  20 |   26.9s | cum   535.2s | acc 85.44% | data-wait   0.4s
+ep  21 |   26.6s | cum   561.9s | acc 89.15% | data-wait   0.5s
+ep  22 |   26.7s | cum   588.5s | acc 90.61% | data-wait   0.4s
+ep  23 |   26.6s | cum   615.1s | acc 90.98% | data-wait   0.4s
+ep  24 |   26.6s | cum   641.7s | acc 91.96% | data-wait   0.4s
+ep  25 |   26.7s | cum   668.4s | acc 92.66% | data-wait   0.4s
+ep  26 |   26.6s | cum   695.0s | acc 92.78% | data-wait   0.4s
+ep  27 |   26.8s | cum   721.9s | acc 93.08% | data-wait   0.5s
+ep  28 |   26.9s | cum   748.7s | acc 93.46% | data-wait   0.5s
+ep  29 |   26.7s | cum   775.5s | acc 93.52% | data-wait   0.4s
+ep  30 |   26.8s | cum   802.3s | acc 93.50% | data-wait   0.5s
+--&gt; Step 3/3: Running Mixed-Precision AMP Run (N=2)...
+W1024 05:12:05.779000 1351 torch/distributed/run.py:851] 
+W1024 05:12:05.779000 1351 torch/distributed/run.py:851] *****************************************
+W1024 05:12:05.779000 1351 torch/distributed/run.py:851] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1024 05:12:05.779000 1351 torch/distributed/run.py:851] *****************************************
+/usr/local/lib/python3.13/dist-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1024 05:12:10.092720453 ProcessGroupNCCL.cpp:5188] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+[comm] compute-only 34.3 ms | with sync 40.2 ms | exposed comm 5.9 ms | raw all-reduce(44.7 MB) 11.1 ms
+ep   1 |   11.1s | cum    11.1s | acc 42.68% | data-wait   0.5s
+ep   2 |   11.2s | cum    22.3s | acc 57.24% | data-wait   0.5s
+ep   3 |   11.2s | cum    33.5s | acc 70.56% | data-wait   0.4s
+ep   4 |   11.2s | cum    44.7s | acc 75.85% | data-wait   0.5s
+ep   5 |   11.1s | cum    55.9s | acc 77.98% | data-wait   0.5s
+ep   6 |   11.2s | cum    67.1s | acc 79.46% | data-wait   0.5s
+ep   7 |   11.3s | cum    78.4s | acc 80.54% | data-wait   0.5s
+ep   8 |   11.1s | cum    89.5s | acc 73.78% | data-wait   0.3s
+ep   9 |   11.1s | cum   100.6s | acc 81.82% | data-wait   0.4s
+ep  10 |   11.1s | cum   111.8s | acc 81.34% | data-wait   0.5s
+ep  11 |   11.2s | cum   122.9s | acc 82.60% | data-wait   0.5s
+ep  12 |   11.2s | cum   134.1s | acc 83.58% | data-wait   0.5s
+ep  13 |   11.2s | cum   145.2s | acc 86.43% | data-wait   0.5s
+ep  14 |   11.2s | cum   156.4s | acc 85.56% | data-wait   0.3s
+ep  15 |   11.2s | cum   167.7s | acc 84.54% | data-wait   0.5s
+ep  16 |   11.3s | cum   179.0s | acc 85.27% | data-wait   0.5s
+ep  17 |   11.2s | cum   190.2s | acc 84.21% | data-wait   0.5s
+ep  18 |   11.3s | cum   201.5s | acc 84.88% | data-wait   0.5s
+ep  19 |   11.1s | cum   212.6s | acc 87.55% | data-wait   0.5s
+ep  20 |   11.4s | cum   224.0s | acc 88.00% | data-wait   0.4s
+ep  21 |   11.3s | cum   235.3s | acc 89.88% | data-wait   0.4s
+ep  22 |   11.3s | cum   246.6s | acc 90.62% | data-wait   0.5s
+ep  23 |   11.1s | cum   257.7s | acc 91.18% | data-wait   0.5s
+ep  24 |   11.3s | cum   269.1s | acc 92.57% | data-wait   0.4s
+ep  25 |   11.2s | cum   280.3s | acc 93.07% | data-wait   0.5s
+ep  26 |   11.2s | cum   291.5s | acc 93.27% | data-wait   0.5s
+ep  27 |   11.2s | cum   302.7s | acc 93.53% | data-wait   0.5s
+ep  28 |   11.2s | cum   313.9s | acc 93.76% | data-wait   0.4s
+ep  29 |   11.1s | cum   325.0s | acc 93.73% | data-wait   0.5s
+ep  30 |   11.1s | cum   336.1s | acc 93.74% | data-wait   0.5s
+--&gt; Generating Analysis &amp; Plots...
+
+### Weak scaling
+
+| N | global batch | epoch time (s) | speedup | efficiency (%) | total time (s) | final acc (%) | acc gap | comm/step (ms) | exposed comm (% of step) | raw all-reduce (ms) | data wait (% epoch) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 128 | 52.67 | 1.00 | 100.0 | 1581 | 93.50 | +0.00 | 3.5 | 2.4 | 0.1 | 0.3 |
+| 2 | 256 | 27.11 | 1.94 | 97.1 | 814 | 93.96 | -0.46 | 7.0 | 5.0 | 11.1 | 1.0 |
+
+### Strong scaling
+
+| N | global batch | epoch time (s) | speedup | efficiency (%) | total time (s) | final acc (%) | acc gap | comm/step (ms) | exposed comm (% of step) | raw all-reduce (ms) | data wait (% epoch) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 512 | 49.56 | 1.00 | 100.0 | 1487 | 93.67 | +0.00 | -21.0 | 0.0 | 0.1 | 0.7 |
+| 2 | 512 | 26.74 | 1.85 | 92.7 | 802 | 93.49 | +0.18 | 8.6 | 2.9 | 11.1 | 1.6 |
+
+### Time to 90% test accuracy (s)
+
+| run | time (s) |
+|---|---|
+| strong_N1 | 1090.919301721001 |
+| strong_N2 | 588.5346268000003 |
+| weak_N1 | 1001.7611718989992 |
+| weak_N2 | 570.0606857649991 |
+| weak_amp_N2 | 246.6224248219978 |
+=== All experiments completed successfully! Results in ./results ===
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>
